@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-default">
+  <main class="app">
+    <header>
+      <h1>Weather App</h1>
+      <p class="subtitle">Live weather for any city</p>
+    </header>
+
+    <form id="search-form" class="search" autocomplete="off">
+      <label for="city-input" class="sr-only">City name</label>
+      <input id="city-input" type="text" placeholder="Enter city name (e.g. Chennai)" required />
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+
+    <div class="unit-toggle" role="group" aria-label="Temperature unit">
+      <button type="button" id="unit-c" class="unit active" aria-pressed="true">°C</button>
+      <button type="button" id="unit-f" class="unit" aria-pressed="false">°F</button>
+    </div>
+
+    <div id="loader" class="loader hidden" aria-live="polite">Loading…</div>
+    <div id="error" class="error hidden" role="alert"></div>
+
+    <p id="source-note" class="note hidden"></p>
+
+    <section id="weather" class="card hidden" aria-live="polite">
+      <h2 id="city-name"></h2>
+      <img id="weather-icon" alt="" width="100" height="100" />
+      <p class="temp"><span id="temp">--</span><span id="temp-unit">°C</span></p>
+      <p id="description" class="description"></p>
+      <div class="details">
+        <div>
+          <span class="label">Feels like</span>
+          <span id="feels-like">--</span>
+        </div>
+        <div>
+          <span class="label">Humidity</span>
+          <span id="humidity">--</span>
+        </div>
+        <div>
+          <span class="label">Wind speed</span>
+          <span id="wind">--</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
