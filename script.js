@@ -1,9 +1,10 @@
 // ====== CONFIG ======
-// 1) Create a free account at https://openweathermap.org and copy your API key.
-// 2) Paste it below. (New keys can take up to ~2 hours to activate.)
-// Note: this key is visible in the browser. For this internship task that is fine;
-// never commit a real key to a public GitHub repo - keep it in a local copy or rotate it.
-const API_KEY = "YOUR_API_KEY_HERE";
+// The API key is NOT stored in this file. It is read from config.js, which is
+// listed in .gitignore so it never reaches GitHub.
+// Setup: copy config.example.js to config.js and paste your OpenWeather key in it.
+// (New keys can take up to ~2 hours to activate.)
+// If config.js is missing, the app still works using a keyless backup source.
+const API_KEY = (window.APP_CONFIG && window.APP_CONFIG.OPENWEATHER_API_KEY) || "";
 const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 // ====== ELEMENTS ======
@@ -172,7 +173,7 @@ async function fetchWeather(city) {
       if (!(err instanceof AuthError)) throw err;
       currentData = await fetchOpenMeteo(city);
       noteEl.textContent = keyMissing
-        ? "Showing backup data (Open-Meteo). Add your OpenWeather API key in script.js."
+        ? "Showing backup data (Open-Meteo). Add your OpenWeather API key in config.js."
         : "OpenWeather key not active yet - showing backup data (Open-Meteo).";
       noteEl.classList.remove("hidden");
     }
